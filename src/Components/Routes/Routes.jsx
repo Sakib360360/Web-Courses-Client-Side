@@ -51,4 +51,6 @@ export const router = createBrowserRouter([
       },
     ],
   },
+
+  // all dashboard routes starts here
 ]);
