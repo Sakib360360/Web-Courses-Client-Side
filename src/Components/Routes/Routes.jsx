@@ -6,7 +6,9 @@ import Home from "../Pages/Home/Home/Home";
 import Classes from "../Pages/Classes/Classes";
 import AdminDashboard from "../Pages/Dashboard/AdminDashboard";
 import InstructorDashboard from "../Pages/Dashboard/InstructorDashboard";
+import ManageUsers from "../Pages/Dashboard/ManageUsers";
 import InstructorPage from "../Pages/InstructorPage/InstructorPage";
+import AdminRoutes from "./AdminRoutes";
 
 export const router = createBrowserRouter([
   {
@@ -20,12 +22,25 @@ export const router = createBrowserRouter([
       },
       {
         path: "/adminDashboard",
-        element: <AdminDashboard></AdminDashboard>,
+        element: (
+          <AdminRoutes>
+            <AdminDashboard></AdminDashboard>
+          </AdminRoutes>
+        ),
+      },
+      {
+        path: "/manageUsers",
+        element: (
+          <AdminRoutes>
+            <ManageUsers></ManageUsers>
+          </AdminRoutes>
+        ),
       },
       {
         path: "/istructorDashboard",
         element: <InstructorDashboard></InstructorDashboard>,
       },
+
       {
         path: "/instructors",
         element: <InstructorPage></InstructorPage>,
