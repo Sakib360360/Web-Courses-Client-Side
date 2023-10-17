@@ -7,6 +7,8 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 import AdminDashboard from "../Pages/Dashboard/AdminDashboard";
 import InstructorDashboard from "../Pages/Dashboard/InstructorDashboard";
+import AdminRoutes from "./AdminRoutes";
+import ManageUsers from "../Pages/Dashboard/ManageUsers";
 
 
  export const router = createBrowserRouter([
@@ -21,7 +23,11 @@ import InstructorDashboard from "../Pages/Dashboard/InstructorDashboard";
         },
         {
           path:"/adminDashboard",
-          element:<AdminDashboard></AdminDashboard>
+          element:<AdminRoutes><AdminDashboard></AdminDashboard></AdminRoutes>
+        },
+        {
+          path:"/manageUsers",
+          element:<AdminRoutes><ManageUsers></ManageUsers></AdminRoutes>
         },
         {
           path:"/istructorDashboard",
