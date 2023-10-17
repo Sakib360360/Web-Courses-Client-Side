@@ -10,6 +10,8 @@ const Navbar = () => {
   //   const [cart] = useCart();
   //   const [isAdmin] = useAdmin();
 
+       const isAdmin = true        // fake
+
   //   const handleLogOut = () => {
   //     logOut()
   //       .then(() => {})
@@ -38,16 +40,16 @@ const Navbar = () => {
       <li>
         <Link to="/contactUs">Contact Us</Link>
       </li>
-      {/* 
+      
       {isAdmin ? (
         <li>
-          <Link to="/dashboard/adminhome">Dashboard</Link>
+          <Link to="/adminDashboard">Dashboard</Link>
         </li>
       ) : (
         <li>
           <Link to="/dashboard/userhome">Dashboard</Link>
         </li>
-      )} */}
+      )}
 
       {/*  <li>
         <Link to="/dashboard/mycart">
