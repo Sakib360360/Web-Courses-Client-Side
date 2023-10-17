@@ -5,6 +5,8 @@ import Main from "../Layouts/Main/Main";
 import Home from "../Pages/Home/Home/Home";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
+import AdminDashboard from "../Pages/Dashboard/AdminDashboard";
+
 
  export const router = createBrowserRouter([
     {
@@ -16,6 +18,10 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
             path:"/",
             element:<Home></Home>
         },
+        {
+          path:"/adminDashboard",
+          element:<AdminDashboard></AdminDashboard>
+        }
       
       ]
     }
