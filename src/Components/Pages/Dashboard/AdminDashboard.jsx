@@ -10,7 +10,7 @@ const AdminDashboard = () => {
                         <p className="text-2xl font-bold">Menu</p>
                         <ul className="mt-2">
                             <li className="mb-2">
-                                <Link  className="text-gray-300 hover:text-white">Dashboard</Link>
+                                <Link to={'/adminDashboard'}  className="text-gray-300 hover:text-white">Dashboard</Link>
                             </li>
                             <li className="mb-2">
                                 <Link to={'/manageUsers'}  className="text-gray-300 hover:text-white">Manage Users</Link>
