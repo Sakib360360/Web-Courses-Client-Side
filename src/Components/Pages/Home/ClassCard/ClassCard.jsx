@@ -1,4 +1,4 @@
-const Card = () => {
+const ClassCard = () => {
   return (
     <div className="bg-white shadow-xl p-2 rounded-lg">
       <div className="w-full rounded-lg overflow-hidden">
@@ -21,4 +21,4 @@ const Card = () => {
   );
 };
 
-export default Card;
+export default ClassCard;
