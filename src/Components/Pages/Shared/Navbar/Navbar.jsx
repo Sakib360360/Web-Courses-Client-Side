@@ -1,12 +1,12 @@
-import { Link } from "react-router-dom";
 import { BsFillBookFill } from "react-icons/bs";
+import { Link } from "react-router-dom";
 // import  { useContext } from "react";
 // import { AuthContext } from "your-auth-context"; // Import your AuthContext
 // import { useCart } from "your-cart-context"; // Import your cart context
 // import { useAdmin } from "your-admin-context"; // Import your admin context
 
 const Navbar = () => {
-    //   const { user, logOut } = useContext(AuthContext);
+  //   const { user, logOut } = useContext(AuthContext);
   //   const [cart] = useCart();
   //   const [isAdmin] = useAdmin();
 
@@ -76,9 +76,9 @@ const Navbar = () => {
     </>
   );
 
-    return (
-         <>
-      <div className="navbar max-w-screen-xl autoPlay bg-black text-white">
+  return (
+    <>
+      <div className="navbar max-w-screen-xl mx-auto autoPlay bg-black text-white">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -126,7 +126,7 @@ const Navbar = () => {
         </div>
       </div>
     </>
-    );
+  );
 };
 
 export default Navbar;
