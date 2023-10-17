@@ -3,7 +3,7 @@ import bannerImg from "../../../../assets/banner.png";
 const Banner = () => {
   return (
     <section className="bg-[#FDF8EE] py-20">
-      <div className="max-w-[1280px] mx-auto px-[1em] flex justify-between items-center flex-col lg:flex-row">
+      <div className="max-w-screen-xl mx-auto px-[1em] flex justify-between items-center flex-col lg:flex-row">
         <div>
           <h1 className="text-5xl font-bold text-black">
             The <span className="text-[#FF7426]">Smart</span>
