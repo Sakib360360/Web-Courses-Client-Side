@@ -1,6 +1,6 @@
 
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-//import toast from 'react-hot-toast'
+import toast from 'react-hot-toast'
 import { FcGoogle } from 'react-icons/fc'
 
 
@@ -29,7 +29,7 @@ const Login = () => {
       .catch(err => {
         setLoading(false)
         console.log(err.message)
-        //toast.error(err.message)
+        toast.error(err.message)
       })
   }
 
@@ -43,7 +43,7 @@ const Login = () => {
       .catch(err => {
         setLoading(false)
         console.log(err.message)
-        //toast.error(err.message)
+        toast.error(err.message)
       })
   }
 

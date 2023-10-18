@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-//import toast from 'react-hot-toast'
+import toast from 'react-hot-toast'
 import { FcGoogle } from 'react-icons/fc'
 import { TbFidgetSpinner } from 'react-icons/tb'
 import useAuth from '../../../hooks/useAuth'
@@ -31,20 +31,20 @@ const Register = () => {
         .then(result => {
           updateUserProfile(name, photo)
             .then(() => {
-              //toast.success('Signup successful')
+              toast.success('Signup successful')
               console.log(result)
               navigate(from, { replace: true })
             })
             .catch(err => {
               setLoading(false)
               console.log(err.message)
-              //toast.error(err.message)
+              toast.error(err.message)
             })
         })
         .catch(err => {
           setLoading(false)
           console.log(err.message)
-          //toast.error(err.message)
+          toast.error(err.message)
         })
     
     }
@@ -58,7 +58,7 @@ const Register = () => {
       .catch(err => {
         setLoading(false)
         console.log(err.message)
-        //toast.error(err.message)
+        toast.error(err.message)
       })
   }
   return (
