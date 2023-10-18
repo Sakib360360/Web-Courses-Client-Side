@@ -51,7 +51,7 @@ const Dashboard = () => {
                 <div className="drawer-content bg-no-repeat bg-cover flex flex-col bg-[url('https://e0.pxfuel.com/wallpapers/1019/142/desktop-wallpaper-light-blue-for-background.jpg')] items-center relative justify-center">
                     {/* Page content here */}
                     <div className='w-full absolute hidden md:block  top-0 left-0'>
-                    <Navbar></Navbar>
+                    {/* <Navbar></Navbar> */}
                     
                     </div>
                     <div className=' top-4 fixed right-1/2 z-20'>

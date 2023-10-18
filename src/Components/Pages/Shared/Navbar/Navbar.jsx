@@ -1,29 +1,28 @@
 import { BsFillBookFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
-import { useContext } from "react";
-import { AuthContext } from "../../../Providers/AuthProvider";
+import useAuth from "../../../../hooks/useAuth";
 
 // import { useCart } from "your-cart-context"; // Import your cart context
 // import { useAdmin } from "your-admin-context"; // Import your admin context
 
 const Navbar = () => {
-    const { user, logOut } = useContext(AuthContext)
-  //   const [cart] = useCart();
-  //   const [isAdmin] = useAdmin();
+     const { user, logOut } = useAuth();
+    // const [cart] = useCart();
+    // const [isAdmin] = useAdmin();
 
   const isAdmin = true; // fake
 
-  //   const handleLogOut = () => {
-  //     logOut()
-  //       .then(() => {})
-  //       .catch((error) => console.log(error));
-  //   };
+    const handleLogOut = () => {
+       logOut()
+       .then(() => {})
+         .catch((error) => console.log(error));
+     };
 
-  //   const getUserProfilePicture = () => {
-  //     // Replace this with your logic to get the user's profile picture URL
-  //     return user.profilePictureUrl;
-  //   };
+     const getUserProfilePicture = () => {
+       // Replace this with your logic to get the user's profile picture URL
+       return user.photoURL;
+     };
 
   const navOptions = (
     <>
@@ -53,15 +52,15 @@ const Navbar = () => {
         </li>
       )}
 
-      {/*  <li>
+     <li>
         <Link to="/dashboard/mycart">
           <button className="btn gap-2">
-            <div className="badge badge-secondary">+{cart?.length || 0}</div>
+           {/*  <div className="badge badge-secondary">+{cart?.length || 0}</div> */}
           </button>
         </Link>
-      </li> */}
+      </li> 
 
-      {user ? (
+        {user ? (
         <>
           <li>
             <img src={getUserProfilePicture()} alt="Profile" className="profile-pic" />
@@ -76,7 +75,7 @@ const Navbar = () => {
         <li>
           <Link to="/login">Login</Link>
         </li>
-      )}
+      )} 
     </>
   );
 
