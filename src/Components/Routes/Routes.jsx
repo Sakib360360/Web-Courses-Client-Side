@@ -14,6 +14,10 @@ import Dashboard from "../Layouts/Dashboard/Dashboard";
 import ManageClasses from "../Pages/Dashboard/ManageClasses";
 import LoginLayout from "../Layouts/LoginLayout/LoginLayout";
 import Register from "../Pages/Regsiter/Register";
+import InstructorHome from "../Pages/Dashboard/InstructorHome";
+import InstructorRoutes from "./InstructorRoutes";
+import AddAClass from "../Pages/Dashboard/AddAClass";
+import MyClasses from "../Pages/Dashboard/MyClasses";
 
 
 export const router = createBrowserRouter([
@@ -85,19 +89,19 @@ export const router = createBrowserRouter([
         //     path:'paymentHistory',
         //     element:<StudentPaymentHistory></StudentPaymentHistory>
         // },
-        // // instructor routes
-        // {
-        //     path:'instructorHome',
-        //     element:<InstructorRoutes><InstructorHome></InstructorHome></InstructorRoutes>
-        // },
-        // {
-        //     path:'addAClass',
-        //     element:<InstructorRoutes><AddAClass></AddAClass></InstructorRoutes>
-        // },
-        // {
-        //     path:'myClasses',
-        //     element:<InstructorRoutes><MyClasses></MyClasses></InstructorRoutes>
-        // },
+        // instructor routes
+        {
+            path:'instructorHome',
+            element:<InstructorRoutes><InstructorHome></InstructorHome></InstructorRoutes>
+        },
+        {
+            path:'addAClass',
+            element:<InstructorRoutes><AddAClass></AddAClass></InstructorRoutes>
+        },
+        {
+            path:'myClasses',
+            element:<InstructorRoutes><MyClasses></MyClasses></InstructorRoutes>
+        },
         // {
         //     path:'updateAClass',
         //     element:<UpdateAClass></UpdateAClass>
