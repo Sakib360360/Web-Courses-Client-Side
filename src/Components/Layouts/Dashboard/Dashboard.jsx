@@ -72,8 +72,11 @@ const Dashboard = () => {
                     <ul className="menu p-4 w-72 h-full bg-no-repeat bg-cover flex flex-col bg-[url('https://e0.pxfuel.com/wallpapers/1019/142/desktop-wallpaper-light-blue-for-background.jpg')] text-black">
                         {/* Sidebar content here */}
                         {navItems}
+                        <div className='absolute left-8 bottom-8 '>
+                        <Link to={'/'} className='btn btn-outline'>Go bake to home</Link>
+                        </div>
                     </ul>
-
+                    
                 </div>
             </div>
     );
