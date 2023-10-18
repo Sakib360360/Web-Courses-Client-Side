@@ -4,6 +4,7 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Home from "../Pages/Home/Home/Home";
 
 import Classes from "../Pages/Classes/Classes";
+import Login from "../Pages/Login/Login"
 import AdminDashboard from "../Pages/Dashboard/AdminDashboard";
 import InstructorDashboard from "../Pages/Dashboard/InstructorDashboard";
 import ManageUsers from "../Pages/Dashboard/ManageUsers";
@@ -11,6 +12,8 @@ import InstructorPage from "../Pages/InstructorPage/InstructorPage";
 import AdminRoutes from "./AdminRoutes";
 import Dashboard from "../Layouts/Dashboard/Dashboard";
 import ManageClasses from "../Pages/Dashboard/ManageClasses";
+import LoginLayout from "../Layouts/LoginLayout/LoginLayout";
+import Register from "../Pages/Regsiter/Register";
 
 
 export const router = createBrowserRouter([
@@ -119,4 +122,20 @@ export const router = createBrowserRouter([
         
     ]
 },
+//login-layout
+  {
+    path: "/",
+    element: <LoginLayout></LoginLayout>,
+    children: [
+      {
+        path: "login",
+        element: <Login></Login>
+      },
+      {
+        path: "register",
+        element: <Register></Register>,
+      },
+    ],
+  }
+
 ]);
