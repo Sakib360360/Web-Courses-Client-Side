@@ -1,17 +1,19 @@
 import { BsFillBookFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
+import { useEffect, useState } from "react";
+// import useCart from "../../../../hooks/useCart";  
 // import  { useContext } from "react";
 // import { AuthContext } from "your-auth-context"; // Import your AuthContext
-// import { useCart } from "your-cart-context"; // Import your cart context
 // import { useAdmin } from "your-admin-context"; // Import your admin context
 
 const Navbar = () => {
   //   const { user, logOut } = useContext(AuthContext);
-  //   const [cart] = useCart();
+    // const [cart] = useCart();
   //   const [isAdmin] = useAdmin();
 
   const isAdmin = true; // fake
+  const [scrolling, setScrolling] = useState(false);
 
   //   const handleLogOut = () => {
   //     logOut()
@@ -23,6 +25,22 @@ const Navbar = () => {
   //     // Replace this with your logic to get the user's profile picture URL
   //     return user.profilePictureUrl;
   //   };
+
+
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setScrolling(true);
+      } else {
+        setScrolling(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const navOptions = (
     <>
@@ -52,13 +70,13 @@ const Navbar = () => {
         </li>
       )}
 
-      {/*  <li>
+     {/*  { <li>
         <Link to="/dashboard/mycart">
           <button className="btn gap-2">
             <div className="badge badge-secondary">+{cart?.length || 0}</div>
           </button>
         </Link>
-      </li> */}
+      </li>} */}
 
       {/*   {user ? (
         <>
@@ -79,10 +97,15 @@ const Navbar = () => {
     </>
   );
 
+  const navbarClasses = `navbar fixed z-10 shadow  mx-auto autoPlay ${
+    scrolling ? "bg-[#FEB546] bg-opacity-40" : ""
+  } text-black`;
+
   return (
     <>
       <div className="navBackGround">
-        <div className="navbar mx-auto  autoPlay text-white">
+        <div className={navbarClasses}>
+        <div className="navbar  mx-auto  autoPlay">
           <div className="navbar-start">
             <div className="dropdown">
               <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -128,6 +151,7 @@ const Navbar = () => {
               alt=""
             />
           </div>
+        </div>
         </div>
       </div>
     </>
