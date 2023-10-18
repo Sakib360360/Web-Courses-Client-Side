@@ -14,7 +14,7 @@ const ClassCard = () => {
         <p className="text-[#FF7426] font-bold">$59</p>
         <p className="my-3">Sets available: 4</p>
         <button className="bg-[#FF7426] text-white px-4 py-2 text-[1rem] rounded-full">
-          Join Course
+          Add to Cart
         </button>
       </div>
     </div>
