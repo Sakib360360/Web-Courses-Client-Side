@@ -10,6 +10,7 @@ import ManageUsers from "../Pages/Dashboard/ManageUsers";
 import InstructorPage from "../Pages/InstructorPage/InstructorPage";
 import AdminRoutes from "./AdminRoutes";
 
+
 export const router = createBrowserRouter([
   {
     path: "/",
