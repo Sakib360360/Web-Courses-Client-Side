@@ -9,8 +9,8 @@ const Dashboard = () => {
     // const [isInstructor, isInstructorLoading] = useInstructor()
     // const [isAdmin, isAdminLoading] = useAdmin()
     // console.log('isAdmin',isAdmin)
-    const isAdmin = true;
-    const isInstructor = false;
+    const isAdmin = false;
+    const isInstructor = true;
     
     
     const navItems = <>

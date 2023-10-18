@@ -1,13 +1,14 @@
 import { BsFillBookFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
-// import  { useContext } from "react";
-// import { AuthContext } from "your-auth-context"; // Import your AuthContext
+import { useContext } from "react";
+import { AuthContext } from "../../../Providers/AuthProvider";
+
 // import { useCart } from "your-cart-context"; // Import your cart context
 // import { useAdmin } from "your-admin-context"; // Import your admin context
 
 const Navbar = () => {
-  //   const { user, logOut } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext)
   //   const [cart] = useCart();
   //   const [isAdmin] = useAdmin();
 
@@ -60,7 +61,7 @@ const Navbar = () => {
         </Link>
       </li> */}
 
-      {/*   {user ? (
+      {user ? (
         <>
           <li>
             <img src={getUserProfilePicture()} alt="Profile" className="profile-pic" />
@@ -75,7 +76,7 @@ const Navbar = () => {
         <li>
           <Link to="/login">Login</Link>
         </li>
-      )} */}
+      )}
     </>
   );
 
