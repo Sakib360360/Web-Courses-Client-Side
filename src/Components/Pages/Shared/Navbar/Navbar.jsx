@@ -7,7 +7,7 @@ import useAuth from "../../../../hooks/useAuth";
 // import { useAdmin } from "your-admin-context"; // Import your admin context
 
 const Navbar = () => {
-     const { user, logOut } = useAuth;
+     const { user, logOut } = useAuth();
     // const [cart] = useCart();
     // const [isAdmin] = useAdmin();
 
@@ -21,7 +21,7 @@ const Navbar = () => {
 
      const getUserProfilePicture = () => {
        // Replace this with your logic to get the user's profile picture URL
-       return user.profilePictureUrl;
+       return user.photoURL;
      };
 
   const navOptions = (
