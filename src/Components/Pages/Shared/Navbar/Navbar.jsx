@@ -22,7 +22,7 @@ const Navbar = () => {
   return (
     <nav className="flex items-center justify-between flex-wrap p-6 shadow-md bg-slate-500">
       <div className="flex items-center flex-shrink-0 text-white mr-6 lg:mr-72">
-        {/* Your logo */}
+       <h1>Logo</h1> {/* logo here */}
       </div>
       <div className="block lg:hidden">
         <button
