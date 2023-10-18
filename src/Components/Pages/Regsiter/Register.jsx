@@ -1,8 +1,10 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import toast from 'react-hot-toast'
+
 import { FcGoogle } from 'react-icons/fc'
 import { TbFidgetSpinner } from 'react-icons/tb'
 import useAuth from '../../../hooks/useAuth'
+import Swal from 'sweetalert2'
+import { toast } from 'react-hot-toast'
 
 const Register = () => {
   const {
@@ -24,16 +26,35 @@ const Register = () => {
     const password = event.target.password.value
     const photo = event.target.password.value
 
-   
-  
-
         createUser(email, password)
-        .then(result => {
+        .then(() => {
           updateUserProfile(name, photo)
             .then(() => {
-              toast.success('Signup successful')
-              console.log(result)
-              navigate(from, { replace: true })
+              // eslint-disable-next-line no-undef
+              const saveUser = { name: name, email: email, photo: photo , role: "student" };
+              fetch("http://localhost:3000/users", {
+                method: "POST",
+                headers: {
+                  "content-type": "application/json",
+                },
+                body: JSON.stringify(saveUser),
+              })
+                .then((res) => res.json())
+                .then((data) => {
+                  console.log(data)
+                  if (data.insertedId) {
+                   // reset();
+                    Swal.fire({
+                      position: "center",
+                      icon: "success",
+                      title: "User created successfully.",
+                      showConfirmButton: false,
+                      timer: 1500,
+                    });
+                    navigate(from, { replace: true });
+                  }
+                });
+            
             })
             .catch(err => {
               setLoading(false)
@@ -52,9 +73,29 @@ const Register = () => {
   const handleGoogleSignIn = () => {
     signInWithGoogle()
       .then(result => {
+
         console.log(result.user)
-        navigate(from, { replace: true })
-      })
+         const loggedInUser = result.user;
+        console.log(loggedInUser);
+
+        const saveUser = {
+          name: loggedInUser.displayName,
+          email: loggedInUser.email,
+        };
+        fetch("http://localhost:3000/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(saveUser),
+        })
+          .then((res) => res.json())
+          .then(() => {
+            navigate(from, { replace: true });
+          });
+      }) 
+        
+      
       .catch(err => {
         setLoading(false)
         console.log(err.message)
