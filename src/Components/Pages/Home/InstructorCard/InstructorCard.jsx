@@ -12,9 +12,6 @@ const InstructorCard = () => {
       <div className="mt-4">
         <h1 className="font-bold">Jhone Deo</h1>
         <p className="my-3">email: example@gmail.com</p>
-        <button className="bg-[#FF7426] text-white px-4 py-2 text-[1rem] rounded-full">
-          Visit courses
-        </button>
       </div>
     </div>
   );
