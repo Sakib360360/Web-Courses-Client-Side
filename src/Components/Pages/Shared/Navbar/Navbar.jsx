@@ -7,7 +7,7 @@ import useAuth from "../../../../hooks/useAuth";
 // import { useAdmin } from "your-admin-context"; // Import your admin context
 
 const Navbar = () => {
-     const { user, logOut } = useAuth;
+     const { user, logOut } = useAuth();
     // const [cart] = useCart();
     // const [isAdmin] = useAdmin();
 
@@ -16,12 +16,12 @@ const Navbar = () => {
     const handleLogOut = () => {
        logOut()
        .then(() => {})
-         .catch((error) => console.log(error));
+       .catch((error) => console.log(error));
      };
 
      const getUserProfilePicture = () => {
        // Replace this with your logic to get the user's profile picture URL
-       return user.profilePictureUrl;
+       return user.photoURL;
      };
 
   const navOptions = (
@@ -67,7 +67,7 @@ const Navbar = () => {
           </li>
           <li>
             <button onClick={handleLogOut} className="btn btn-active">
-              LogOut
+              Logout
             </button>
           </li>
         </>
@@ -119,7 +119,7 @@ const Navbar = () => {
             <ul className="menu font-semibold menu-horizontal px-1">{navOptions}</ul>
           </div>
           <div className="navbar-end">
-            {/* {user && <img className="rounded-md w-[50px] h-[50px]" src={getUserProfilePicture()} alt="Profile" />} */}
+             {user && <img className="rounded-md w-[50px] h-[50px]" src={getUserProfilePicture()} alt="Profile" />} 
           </div>
           <div className="navbar-end">
             <img

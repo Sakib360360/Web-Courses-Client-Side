@@ -11,7 +11,7 @@ const Register = () => {
     signInWithGoogle,
     createUser,
     updateUserProfile,
-  } = useAuth;
+  } = useAuth();
   const navigate = useNavigate()
   const location = useLocation()
   const from = location.state?.from?.pathname || '/'
