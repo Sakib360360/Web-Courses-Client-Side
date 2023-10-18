@@ -1,160 +1,83 @@
-import { BsFillBookFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
-import "./Navbar.css";
-import { useEffect, useState } from "react";
-// import useCart from "../../../../hooks/useCart";  
-// import  { useContext } from "react";
-// import { AuthContext } from "your-auth-context"; // Import your AuthContext
-// import { useAdmin } from "your-admin-context"; // Import your admin context
-
+import useAuth from "../../../../hooks/useAuth";
+import { useState } from "react";
+import { HiMenuAlt3 } from 'react-icons/hi';
 const Navbar = () => {
-  //   const { user, logOut } = useContext(AuthContext);
-    // const [cart] = useCart();
-  //   const [isAdmin] = useAdmin();
+  const { user, logOut } = useAuth();
+  const [isOpen, setIsOpen] = useState(false);
+  const isAdmin = true; // Replace with your authentication logic
 
-  const isAdmin = true; // fake
-  const [scrolling, setScrolling] = useState(false);
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
 
-  //   const handleLogOut = () => {
-  //     logOut()
-  //       .then(() => {})
-  //       .catch((error) => console.log(error));
-  //   };
-
-  //   const getUserProfilePicture = () => {
-  //     // Replace this with your logic to get the user's profile picture URL
-  //     return user.profilePictureUrl;
-  //   };
-
-
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 0) {
-        setScrolling(true);
-      } else {
-        setScrolling(false);
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  const navOptions = (
-    <>
-      <li>
-        <Link to="/">Home</Link>
-      </li>
-      <li>
-        <Link to="/aboutUS">About Us</Link>
-      </li>
-      <li>
-        <Link to="/courses">Courses</Link>
-      </li>
-      <li>
-        <Link to="/ourService">Our Service</Link>
-      </li>
-      <li>
-        <Link to="/contactUs">Contact Us</Link>
-      </li>
-
-      {isAdmin ? (
-        <li>
-          <Link to="/adminDashboard">Dashboard</Link>
-        </li>
-      ) : (
-        <li>
-          <Link to="/dashboard/userhome">Dashboard</Link>
-        </li>
-      )}
-
-     {/*  { <li>
-        <Link to="/dashboard/mycart">
-          <button className="btn gap-2">
-            <div className="badge badge-secondary">+{cart?.length || 0}</div>
-          </button>
-        </Link>
-      </li>} */}
-
-      {/*   {user ? (
-        <>
-          <li>
-            <img src={getUserProfilePicture()} alt="Profile" className="profile-pic" />
-          </li>
-          <li>
-            <button onClick={handleLogOut} className="btn btn-active">
-              LogOut
-            </button>
-          </li>
-        </>
-      ) : (
-        <li>
-          <Link to="/login">Login</Link>
-        </li>
-      )} */}
-    </>
-  );
-
-  const navbarClasses = `navbar fixed z-10 shadow  mx-auto autoPlay ${
-    scrolling ? "bg-[#FEB546] bg-opacity-40" : ""
-  } text-black`;
+  const getUserProfilePicture = () => {
+    // Replace this with your logic to get the user's profile picture URL
+    return user.photoURL;
+  };
 
   return (
-    <>
-      <div className="navBackGround">
-        <div className={navbarClasses}>
-        <div className="navbar  mx-auto  autoPlay">
-          <div className="navbar-start">
-            <div className="dropdown">
-              <label tabIndex={0} className="btn btn-ghost lg:hidden">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h8m-8 6h16"
-                  />
-                </svg>
-              </label>
-              <ul
-                tabIndex={0}
-                className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
-              >
-                {navOptions}
-              </ul>
-            </div>
-            <a className="btn btn-ghost normal-case text-xl">
-              <span className="font-bold text-2xl iconColor">
-                <BsFillBookFill></BsFillBookFill>
-              </span>{" "}
-              <span className="text-black text-2xl font-extrabold">Online School</span>
-            </a>
-          </div>
-          <div className="navbar-center hidden lg:flex">
-            <ul className="menu text-black font-semibold menu-horizontal px-1">{navOptions}</ul>
-          </div>
-          <div className="navbar-end">
-            {/* {user && <img className="rounded-md w-[50px] h-[50px]" src={getUserProfilePicture()} alt="Profile" />} */}
-          </div>
-          <div className="navbar-end">
-            <img
-              className="  rounded-full w-[50px] h-[50px]"
-              src="https://i.ibb.co/0MbWfk5/download.jpg"
-              alt=""
-            />
-          </div>
+    <nav className="flex items-center justify-between flex-wrap p-6 shadow-md bg-slate-500">
+      <div className="flex items-center flex-shrink-0 text-white mr-6 lg:mr-72">
+       <h1>Logo</h1> {/* logo here */}
+      </div>
+      <div className="block lg:hidden">
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="flex items-center px-3 py-2 rounded text-black-500 hover:text-black-400"
+        >
+        < HiMenuAlt3></HiMenuAlt3>
+        </button>
+      </div>
+      <div
+        className={`w-full block flex-grow lg:flex lg:items-center lg:w-auto ${
+          isOpen ? "block" : "hidden"
+        }`}
+      >
+        <div className="text-sm lg:flex-grow">
+          <Link to="/" className="block mt-4 lg:inline-block lg:mt-0 text-white-200 mr-4">
+            Home
+          </Link>
+          <Link to="/aboutUS" className="block mt-4 lg:inline-block lg:mt-0 text-white-200 mr-4">
+            About Us
+          </Link>
+          <Link to="/courses" className="block mt-4 lg:inline-block lg:mt-0 text-white-200 mr-4">
+            Courses
+          </Link>
+          <Link to="/ourService" className="block mt-4 lg:inline-block lg:mt-0 text-white-200 mr-4">
+            Services
+          </Link>
+          <Link to="/contactUS" className="block mt-4 lg:inline-block lg:mt-0 text-white-200 mr-4">
+            Contact us
+          </Link>
+          {isAdmin ? (
+            <Link to="/dashboard/adminHome" className="block mt-4 lg:inline-block lg:mt-0 text-white-200 mr-4">
+              Dashboard
+            </Link>
+          ) : (
+            <Link to="/dashboard/userhome" className="block mt-4 lg:inline-block lg:mt-0 text-white-200 mr-4">
+              Dashboard
+            </Link>
+          )}
         </div>
+        <div className="flex items-center space-x-4">
+          {user ? (
+            <>
+              <img src={getUserProfilePicture()} alt="Profile" className="w-10 h-10 rounded-full" />
+              <button onClick={handleLogOut} className="text-white">
+                Logout
+              </button>
+            </>
+          ) : (
+            <Link to="/login" className="text-white text-center">
+              Login
+            </Link>
+          )}
         </div>
       </div>
-    </>
+    </nav>
   );
 };
 
