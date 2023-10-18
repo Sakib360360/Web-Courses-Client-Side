@@ -1,11 +1,12 @@
-import React from 'react';
 
 import { Navigate, useLocation } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 
+// eslint-disable-next-line react/prop-types
 const PrivateRoute = ({ children }) => {
-    // const { user, loading } = useContext(AuthContext)
-    const user = true; //fake
-    const loading = false //fake
+    const { user, loading } = useAuth();
+   /*  const user = true; //fake
+    const loading = false //fake */
     const location = useLocation()
     if (loading) {
         return <progress className='progress w-56'></progress>

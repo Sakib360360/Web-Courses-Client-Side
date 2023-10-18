@@ -1,5 +1,3 @@
-
-
 import { createContext, useEffect, useState } from 'react'
 import {
   GoogleAuthProvider,
@@ -39,10 +37,7 @@ const AuthProvider = ({ children }) => {
     return signInWithPopup(auth, googleProvider)
   }
 
- /*  const resetPassword = email => {
-    setLoading(true)
-    return sendPasswordResetEmail(auth, email)
-  } */
+
 
   const logOut = () => {
     setLoading(true)
