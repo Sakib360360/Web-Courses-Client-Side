@@ -10,7 +10,7 @@ const Dashboard = () => {
     // const [isAdmin, isAdminLoading] = useAdmin()
     // console.log('isAdmin',isAdmin)
     const isAdmin = false;
-    const isInstructor = true;
+    const isInstructor = false;
     
     
     const navItems = <>
