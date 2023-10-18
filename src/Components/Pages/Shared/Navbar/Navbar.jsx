@@ -1,49 +1,11 @@
 import { Link } from "react-router-dom";
-import "./Navbar.css"; // You can add your custom CSS classes
 import useAuth from "../../../../hooks/useAuth";
 import { useState } from "react";
 import { HiMenuAlt3 } from 'react-icons/hi';
 const Navbar = () => {
-<<<<<<< HEAD
   const { user, logOut } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const isAdmin = true; // Replace with your authentication logic
-=======
-     const { user, logOut } = useAuth();
-    // const [cart] = useCart();
-    // const [isAdmin] = useAdmin();
-
-  const isAdmin = true; // fake
-
-    const handleLogOut = () => {
-       logOut()
-       .then(() => {})
-         .catch((error) => console.log(error));
-     };
-
-     const getUserProfilePicture = () => {
-       // Replace this with your logic to get the user's profile picture URL
-       return user.photoURL;
-     };
-
-  const navOptions = (
-    <>
-      <li>
-        <Link to="/">Home</Link>
-      </li>
-      <li>
-        <Link to="/aboutUS">About Us</Link>
-      </li>
-      <li>
-        <Link to="/courses">Courses</Link>
-      </li>
-      <li>
-        <Link to="/ourService">Our Service</Link>
-      </li>
-      <li>
-        <Link to="/contactUs">Contact Us</Link>
-      </li>
->>>>>>> 64d9997824a6e876f22e65801ab9fb63bcbd80f7
 
   const handleLogOut = () => {
     logOut()
