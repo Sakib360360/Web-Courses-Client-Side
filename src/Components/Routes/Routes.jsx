@@ -24,6 +24,7 @@ import StudentSelectedClasses from "../Pages/Dashboard/StudentSelectedClasses"
 import PaymentHistory from "../Pages/Dashboard/PaymentHistory";
 import AboutUs from "../Pages/AboutUs/AboutUs";
 import Contact from "../Pages/Contact/Contact";
+import Service from "../Pages/Service/Service";
 
 
 export const router = createBrowserRouter([
@@ -72,6 +73,10 @@ export const router = createBrowserRouter([
       {
         path:"/contactUS",
         element:<Contact></Contact>
+      },
+      {
+        path:'/ourService',
+        element:<Service></Service>
       }
     ],
   },

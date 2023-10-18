@@ -22,7 +22,7 @@ const AboutUs = () => {
             data-aos-delay="200"
           >
             <img
-              src="https://i.ibb.co/72Bwdpk/12.jpg"
+              src="https://i.ibb.co/3rMVwhS/cleverbox-about-us-small-2.webp"
               className="w-3/4 h-[463px] rounded-lg shadow-2xl"
             />
             <img
