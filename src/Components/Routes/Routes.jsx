@@ -61,7 +61,7 @@ export const router = createBrowserRouter([
   // all dashboard routes starts here
   {
     path:'dashboard',
-    element:<Dashboard></Dashboard>,
+    element:<Dashboard></Dashboard>, //element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>  will be un comment later
     errorElement:<ErrorPage></ErrorPage>,
     children:[
         //student routes
