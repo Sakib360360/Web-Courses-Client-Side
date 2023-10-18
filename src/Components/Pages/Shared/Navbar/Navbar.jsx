@@ -44,7 +44,7 @@ const Navbar = () => {
 
       {isAdmin ? (
         <li>
-          <Link to="/adminDashboard">Dashboard</Link>
+          <Link to="/dashboard/adminHome">Dashboard</Link>
         </li>
       ) : (
         <li>
