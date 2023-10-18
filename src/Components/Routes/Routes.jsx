@@ -18,6 +18,10 @@ import InstructorHome from "../Pages/Dashboard/InstructorHome";
 import InstructorRoutes from "./InstructorRoutes";
 import AddAClass from "../Pages/Dashboard/AddAClass";
 import MyClasses from "../Pages/Dashboard/MyClasses";
+import StudentHome from "../Pages/Dashboard/StudentHome";
+import EnrolledClasses from "../Pages/Dashboard/EnrolledClasses";
+import StudentSelectedClasses from "../Pages/Dashboard/StudentSelectedClasses"
+import PaymentHistory from "../Pages/Dashboard/PaymentHistory";
 
 
 export const router = createBrowserRouter([
@@ -69,26 +73,26 @@ export const router = createBrowserRouter([
     errorElement:<ErrorPage></ErrorPage>,
     children:[
         //student routes
-        // {
-        //     path:'studenthome',
-        //     element:<StudentHome></StudentHome>
-        // },
-        // {
-        //     path:'selectedClasses',
-        //     element:<StudentSelectedClasses></StudentSelectedClasses>
-        // },
-        // {
-        //     path:'enrolledClasses',
-        //     element:<StudentEnrolledClasses></StudentEnrolledClasses>
-        // },
+        {
+            path:'studenthome',
+            element:<StudentHome></StudentHome>
+        },
+        {
+            path:'selectedClasses',
+            element:<StudentSelectedClasses></StudentSelectedClasses>
+        },
+        {
+            path:'enrolledClasses',
+            element:<EnrolledClasses></EnrolledClasses>
+        },
         // {
         //     path:'payment',
         //     element:<Payment></Payment>
         // },
-        // {
-        //     path:'paymentHistory',
-        //     element:<StudentPaymentHistory></StudentPaymentHistory>
-        // },
+        {
+            path:'paymentHistory',
+            element:<PaymentHistory></PaymentHistory>
+        },
         // instructor routes
         {
             path:'instructorHome',
