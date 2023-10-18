@@ -109,14 +109,14 @@ const Navbar = () => {
               </ul>
             </div>
             <a className="btn btn-ghost normal-case text-xl">
-              <span className="font-bold">
+              <span className="font-bold text-2xl iconColor">
                 <BsFillBookFill></BsFillBookFill>
               </span>{" "}
-              Online School
+              <span className="text-black text-2xl font-extrabold">Online School</span>
             </a>
           </div>
           <div className="navbar-center hidden lg:flex">
-            <ul className="menu font-semibold menu-horizontal px-1">{navOptions}</ul>
+            <ul className="menu text-black font-semibold menu-horizontal px-1">{navOptions}</ul>
           </div>
           <div className="navbar-end">
             {/* {user && <img className="rounded-md w-[50px] h-[50px]" src={getUserProfilePicture()} alt="Profile" />} */}
