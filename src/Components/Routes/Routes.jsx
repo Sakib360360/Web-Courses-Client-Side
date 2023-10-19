@@ -13,7 +13,7 @@ import AdminRoutes from "./AdminRoutes";
 import Dashboard from "../Layouts/Dashboard/Dashboard";
 import ManageClasses from "../Pages/Dashboard/ManageClasses";
 import LoginLayout from "../Layouts/LoginLayout/LoginLayout";
-import Register from "../Pages/Regsiter/Register";
+
 import InstructorHome from "../Pages/Dashboard/InstructorHome";
 import InstructorRoutes from "./InstructorRoutes";
 import AddAClass from "../Pages/Dashboard/AddAClass";
@@ -23,9 +23,10 @@ import EnrolledClasses from "../Pages/Dashboard/EnrolledClasses";
 import StudentSelectedClasses from "../Pages/Dashboard/StudentSelectedClasses"
 import PaymentHistory from "../Pages/Dashboard/PaymentHistory";
 import Payment from "../Pages/Dashboard/Payment";
-import AboutUs from "../Pages/AboutUs/AboutUs";
-import Contact from "../Pages/Contact/Contact";
-import Service from "../Pages/Service/Service";
+import Register from "../Pages/Register/Register";
+
+
+
 
 
 export const router = createBrowserRouter([
