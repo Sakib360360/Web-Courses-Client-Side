@@ -7,7 +7,7 @@ const Navbar = () => {
   const { user, logOut } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const [isAdmin, isAdminLoading] = useAdmin()
-console.log(isAdmin)
+  console.log(isAdmin)
   const handleLogOut = () => {
     logOut()
       .then(() => {})
