@@ -5,7 +5,7 @@ const PopularInstructor = () => {
   const [instructors, setInstructors] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/instructors?limit=6")
+    fetch("https://web-courses-server-side.vercel.app/instructors?limit=6")
       .then((res) => res.json())
       .then((data) => setInstructors(data))
       .catch((err) => console.log(err));
