@@ -26,7 +26,6 @@ import StudentHome from "../Pages/Dashboard/StudentHome";
 import StudentSelectedClasses from "../Pages/Dashboard/StudentSelectedClasses";
 import Register from "../Pages/Register/Register";
 import Service from "../Pages/Service/Service";
-import InstructorRoutes from "./InstructorRoutes";
 
 export const router = createBrowserRouter([
   {

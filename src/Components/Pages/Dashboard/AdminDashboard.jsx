@@ -4,7 +4,7 @@ const AdminDashboard = () => {
     return (
        <>
         <div>
-            <p className='text-black'>admin dashboard is being constructed</p>
+            <p className='text-black'>Welcome to dahsboard</p>
         </div>
        </>
     );
