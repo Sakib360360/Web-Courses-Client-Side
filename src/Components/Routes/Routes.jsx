@@ -22,6 +22,9 @@ import StudentHome from "../Pages/Dashboard/StudentHome";
 import EnrolledClasses from "../Pages/Dashboard/EnrolledClasses";
 import StudentSelectedClasses from "../Pages/Dashboard/StudentSelectedClasses"
 import PaymentHistory from "../Pages/Dashboard/PaymentHistory";
+import AboutUs from "../Pages/AboutUs/AboutUs";
+import Contact from "../Pages/Contact/Contact";
+import Service from "../Pages/Service/Service";
 import Payment from "../Pages/Dashboard/Payment";
 
 
@@ -64,6 +67,18 @@ export const router = createBrowserRouter([
         path: "/classes",
         element: <Classes></Classes>,
       },
+      {
+        path:'/aboutUS',
+        element:<AboutUs></AboutUs>
+      },
+      {
+        path:"/contactUS",
+        element:<Contact></Contact>
+      },
+      {
+        path:'/ourService',
+        element:<Service></Service>
+      }
     ],
   },
 
