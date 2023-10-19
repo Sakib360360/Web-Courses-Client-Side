@@ -14,7 +14,7 @@ const ManageClasses = () => {
     const [allCourses,setAllCourses] = useState([])
 
     useEffect(()=>{
-        axios.get(`http://localhost:3000/courses`)
+        axios.get(`http://localhost:3000/allCourses`)
   .then(response => {
     // Handle the successful response here
     setAllCourses(response.data)
