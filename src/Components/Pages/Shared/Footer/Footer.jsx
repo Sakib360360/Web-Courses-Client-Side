@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+import { FaFacebook, FaGithub, FaLinkedinIn } from "react-icons/fa";
 const Footer = () => {
   return (
     <>
@@ -48,23 +50,29 @@ const Footer = () => {
             Email: mdjewel878761@gmail.com
           </a>
 
-          <div className="flex gap-4">
-            <a
-              className="link link-hover"
-              href="https://www.facebook.com/yourpage"
-            >
-              Facebook
-            </a>
-            <a className="link link-hover" href="https://twitter.com/yourpage">
-              Twitter
-            </a>
-            <a
-              className="link link-hover"
-              href="https://www.linkedin.com/in/yourprofile"
-            >
-              LinkedIn
-            </a>
-          </div>
+          <div className="flex gap-10">
+                      <Link
+                        className="flex justify-center items-center mt-2 w-[52px] h-[52px] text-gray-700 hover:text-gray-900 rounded-full border border-gray-200 dark:border-gray-600 shadow-sm dark:hover:text-black dark:text-gray-400 dark:bg-gray-700 dark:hover:bg-gray-600 focus:ring-4 focus:ring-gray-300 focus:outline-none dark:focus:ring-gray-400"
+                        target="_blank"
+                        to="" //TO DO
+                      >
+                        <FaFacebook />
+                      </Link>
+                      <Link
+                        className="flex justify-center items-center mt-2 w-[52px] h-[52px] text-gray-700 hover:text-gray-900 rounded-full border border-gray-200 dark:border-gray-600 shadow-sm dark:hover:text-black dark:text-gray-400 dark:bg-gray-700 dark:hover:bg-gray-600 focus:ring-4 focus:ring-gray-300 focus:outline-none dark:focus:ring-gray-400"
+                        target="_blank"
+                        to="" //TO DO
+                      >
+                        <FaGithub />
+                      </Link>
+                      <Link
+                        className="flex justify-center items-center mt-2 w-[52px] h-[52px] text-gray-700 hover:text-gray-900 rounded-full border border-gray-200 dark:border-gray-600 shadow-sm dark:hover:text-black dark:text-gray-400 dark:bg-gray-700 dark:hover:bg-gray-600 focus:ring-4 focus:ring-gray-300 focus:outline-none dark:focus:ring-gray-400"
+                        target="_blank"
+                        to="" //TO DO
+                      >
+                        <FaLinkedinIn />
+                      </Link>
+                    </div>
         </nav>
       </footer>
     </>

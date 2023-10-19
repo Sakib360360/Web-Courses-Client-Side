@@ -22,7 +22,11 @@ console.log(isAdmin)
   return (
     <nav className="flex items-center justify-between flex-wrap p-6 shadow-md bg-slate-500">
       <div className="flex items-center flex-shrink-0 text-white mr-6 lg:mr-72">
-       <h1>Logo</h1> {/* logo here */}
+      <img
+            className="rounded-full w-10 h-10 "
+            src="https://i.ibb.co/0MbWfk5/download.jpg"
+            alt=""
+          /> {/* You can give this logo if you want. */}
       </div>
       <div className="block lg:hidden">
         <button
