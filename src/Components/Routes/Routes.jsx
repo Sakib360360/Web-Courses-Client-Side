@@ -25,6 +25,10 @@ import PaymentHistory from "../Pages/Dashboard/PaymentHistory";
 import AboutUs from "../Pages/AboutUs/AboutUs";
 import Contact from "../Pages/Contact/Contact";
 import Service from "../Pages/Service/Service";
+import Payment from "../Pages/Dashboard/Payment";
+import AboutUs from "../Pages/AboutUs/AboutUs";
+import Contact from "../Pages/Contact/Contact";
+import Service from "../Pages/Service/Service";
 
 
 export const router = createBrowserRouter([
@@ -100,10 +104,10 @@ export const router = createBrowserRouter([
             path:'enrolledClasses',
             element:<EnrolledClasses></EnrolledClasses>
         },
-        // {
-        //     path:'payment',
-        //     element:<Payment></Payment>
-        // },
+         {
+             path:'payment',
+             element:<Payment></Payment>
+        },
         {
             path:'paymentHistory',
             element:<PaymentHistory></PaymentHistory>
