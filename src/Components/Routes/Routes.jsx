@@ -24,6 +24,9 @@ import StudentSelectedClasses from "../Pages/Dashboard/StudentSelectedClasses"
 import PaymentHistory from "../Pages/Dashboard/PaymentHistory";
 import Payment from "../Pages/Dashboard/Payment";
 import Register from "../Pages/Register/Register";
+import AboutUs from "../Pages/AboutUs/AboutUs";
+import Contact from "../Pages/Contact/Contact"
+import Service from "../Pages/Service/Service"
 
 
 
