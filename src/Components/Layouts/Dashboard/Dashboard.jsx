@@ -29,7 +29,7 @@ const Dashboard = () => {
 //     },[role])
 
     // console.log(role);
-    console.log(isAdmin,isInstructor)
+    // console.log(isAdmin,isInstructor)
     useEffect(()=>{
         if(isAdmin==="admin"){
             setIsAdminn(true)
