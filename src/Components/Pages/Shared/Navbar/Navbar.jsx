@@ -2,11 +2,12 @@ import { Link } from "react-router-dom";
 import useAuth from "../../../../hooks/useAuth";
 import { useState } from "react";
 import { HiMenuAlt3 } from 'react-icons/hi';
+import useAdmin from "../../../../hooks/useAdmin";
 const Navbar = () => {
   const { user, logOut } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
-  const isAdmin = true; // Replace with your authentication logic
-
+  const [isAdmin, isAdminLoading] = useAdmin()
+  console.log(isAdmin)
   const handleLogOut = () => {
     logOut()
       .then(() => {})
@@ -61,7 +62,7 @@ const Navbar = () => {
               Dashboard
             </Link>
           ) : (
-            <Link to="/dashboard/userhome" className="block mt-4 lg:inline-block lg:mt-0 text-white-200 mr-4">
+            <Link to="/dashboard/studenthome" className="block mt-4 lg:inline-block lg:mt-0 text-white-200 mr-4">
               Dashboard
             </Link>
           )}

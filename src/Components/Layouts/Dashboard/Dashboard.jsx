@@ -1,16 +1,47 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, NavLink, Outlet } from 'react-router-dom';
 import { FaChalkboardTeacher,FaRegAddressBook,FaHome,FaUsers,FaUsersCog,FaCcStripe,FaFolder,FaFolderOpen } from "react-icons/fa";
-import Navbar from '../../Pages/Shared/Navbar/Navbar';
 import Footer from '../../Pages/Shared/Footer/Footer';
+// import axios from 'axios';
+import useAuth from '../../../hooks/useAuth';
+import useAdmin from '../../../hooks/useAdmin';
 
 const Dashboard = () => {
-    // const { user } = useContext(AuthContext)
+    const { user } = useAuth()
+    const [isAdmin, isAdminLoading] = useAdmin()
+    const [isAdminn,setIsAdminn] = useState(false)
+    const [isInstructor,setIsInstructor] = useState(false)
+    
     // const [isInstructor, isInstructorLoading] = useInstructor()
-    // const [isAdmin, isAdminLoading] = useAdmin()
+    
     // console.log('isAdmin',isAdmin)
-    const isAdmin = false;
-    const isInstructor = false;
+//     useEffect(()=>{
+//         axios.get(`http://localhost:3000/users/role/${user?.email}`)
+//   .then(response => {
+//     // Handle the successful response here
+//     setRole(response.data.role)
+    
+//   })
+//   .catch(error => {
+//     // Handle errors here
+//     console.error('Error fetching data:', error);
+//   });
+//     },[role])
+
+    // console.log(role);
+    // console.log(isAdmin,isInstructor)
+    useEffect(()=>{
+        if(isAdmin==="admin"){
+            setIsAdminn(true)
+        }else if(isAdmin ==="instructor"){
+            setIsInstructor(true)
+        }
+    },[isAdmin])
+
+    
+
+   
+    
     
     
     const navItems = <>
@@ -23,14 +54,14 @@ const Dashboard = () => {
             </>
         }
         {
-            isAdmin && <>
+            isAdminn && <>
                 <li><NavLink to='/dashboard/adminHome'>Admin Home <FaHome></FaHome></NavLink></li>
                 <li><NavLink to='/dashboard/manageClasses'>Manage Classes <FaChalkboardTeacher></FaChalkboardTeacher></NavLink></li>
                 <li><NavLink to='/dashboard/manageUsers'>Manage Users <FaUsersCog></FaUsersCog></NavLink></li>
             </>
         }
         {
-            !isAdmin && !isInstructor ? <>
+            isAdminn===false && isInstructor===false ? <>
                 <li><NavLink to='/dashboard/studenthome'>Home <FaHome></FaHome></NavLink></li>
                 <li><NavLink to='/dashboard/selectedClasses'>My Selected Classes <FaFolder></FaFolder></NavLink></li>
                 <li><NavLink to='/dashboard/enrolledClasses'>My Enrolled Classes <FaFolderOpen></FaFolderOpen></NavLink></li>
