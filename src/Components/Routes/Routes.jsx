@@ -13,6 +13,7 @@ import ManageUsers from "../Pages/Dashboard/ManageUsers";
 import InstructorPage from "../Pages/InstructorPage/InstructorPage";
 import Login from "../Pages/Login/Login";
 import AdminRoutes from "./AdminRoutes";
+import InstructorRoutes from "./InstructorRoutes";
 
 import AboutUs from "../Pages/AboutUs/AboutUs";
 import Contact from "../Pages/Contact/Contact";
