@@ -11,7 +11,7 @@ const useAdmin = () => {
         enabled: !loading,
         queryFn: async () => {
             const res = await axios.get(`http://localhost:3000/users/role/${user?.email}`);
-            console.log('is admin response', res)
+            // console.log('is admin response', res)
             return res.data.role;
         }
     })
