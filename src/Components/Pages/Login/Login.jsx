@@ -46,9 +46,17 @@ const Login = () => {
   const handleGoogleSignIn = () => {
     signInWithGoogle()
       .then((result) => {
-        console.log(result.user);
+        if (result.user) {
+          axios
+            .post("http://localhost:3000/jwt", { email: result.user?.email })
+            .then((res) => {
+              localStorage.setItem("access-token", `${res.data}`);
+            });
+        } else {
+          localStorage.removeItem("access-token");
+        }
+
         const loggedInUser = result.user;
-        console.log(loggedInUser);
 
         const saveUser = {
           name: loggedInUser.displayName,
