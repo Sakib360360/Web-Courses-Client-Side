@@ -12,53 +12,70 @@ const ManageClasses = () => {
     // const [allClasses, refetch] = useManageClasses()
     // const [textareaValue, setTextareaValue] = useState('');
     // const [sendItem,setSendItem] = useState({})
-    const [allCourses,setAllCourses] = useState([])
-
-    useEffect(()=>{
+    const [allCourses, setAllCourses] = useState([])
+    // const [updated,setUpdated]  =useState()
+    const refetch = () => {
         axios.get(`http://localhost:3000/allCourses`)
-  .then(response => {
-    // Handle the successful response here
-    setAllCourses(response.data)
-    
-  })
-  .catch(error => {
-    // Handle errors here
-    console.error('Error fetching data:', error);
-  });
-    },[])
+            .then(response => {
+                // Handle the successful response here
+                setAllCourses(response.data)
+
+            })
+            .catch(error => {
+                // Handle errors here
+                console.error('Error fetching data:', error);
+            });
+    }
+
+    useEffect(() => {
+        axios.get(`http://localhost:3000/allCourses`)
+            .then(response => {
+                // Handle the successful response here
+                setAllCourses(response.data)
+
+            })
+            .catch(error => {
+                // Handle errors here
+                console.error('Error fetching data:', error);
+            });
+    }, [])
 
 
     console.log(allCourses)
-    
+
 
 
     // handle approve
     const handleApprove = (item) => {
-        console.log(item)
         const status = 'approved'
-        axios.patch(`http://localhost:3000/pending-courses/${item._id}`, { status })
+        // console.log(item)
+
+            axios.patch(`http://localhost:3000/pending-courses/${item._id}?status=${status}`)
+                .then(response => {
+                    if (response.data.modifiedCount) {
+                        Swal.fire('Approved')
+                        setStatus('approved')
+                        refetch()
+                    }
+                })
+                .catch(error => console.log(error))
+        
+    }
+    // handle deny
+    const handleDeny = (item) => {
+        const status = 'denied'
+
+        axios.patch(`http://localhost:3000/pending-courses/${item._id}?status=${status}`)
             .then(response => {
                 if (response.data.modifiedCount) {
-                    Swal.fire('Approved')
-                    setStatus('approved')
-                    // refetch()
+                    Swal.fire('Denied')
+                    setStatus('denied')
+                    refetch()
                 }
             })
             .catch(error => console.log(error))
+
     }
-    // handle deny
-    // const handleDeny = (item) => {
-    //     const status = 'deny'
-    //     axiosInstance.put(`/updateStatus/${item._id}`, { status })
-    //         .then(response => {
-    //             if (response.data.modifiedCount) {
-    //                 Swal.fire('Denied')
-    //                 setStatus('denied')
-    //                 refetch()
-    //             }
-    //         })
-    //         .catch(error => console.log(error))
-    // }
     // handle feedback
     // const handleSendFeedback = (item)=>{
     //     setSendItem(item)
@@ -94,18 +111,18 @@ const ManageClasses = () => {
     //     const selectedId = item.selectedId;
     //     return allClasses.some(obj => obj.id === selectedId);
     //   });
-      
+
     //   const totalCount = matchingIds.length;
-      
+
     //   console.log(totalCount);
 
 
 
-
+    console.log(allCourses)
 
     return (
         <div>
-            
+
             {/* show all in table */}
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
@@ -155,7 +172,7 @@ const ManageClasses = () => {
                                 <td>{item.seats}</td>
                                 <td>{item.status}</td>
                                 <td><button disabled={item.status === 'pending' ? false : true} onClick={() => handleApprove(item)} className='btn btn-success btn-sm'>Approve</button></td>
-                                <td><button disabled={item.status === 'pending' ? false : true} onClick={() => handleDeny(item)} className='btn btn-sm btn-error'>Deny</button></td>  
+                                <td><button disabled={item.status === 'pending' ? false : true} onClick={() => handleDeny(item)} className='btn btn-sm btn-error'>Deny</button></td>
                                 {/* TODO: onclick show more
                                  {/* <>
                                     <div className="modal" id="my_modal_8">
@@ -171,8 +188,8 @@ const ManageClasses = () => {
                                     </div>
                                 </> */}
                                 {/* <td><button  onClick={()=>handleSendFeedback(item)} className=''><a href="#my_modal_8" disabled={item.status === 'pending'} className="btn btn-sm">Send Feedback</a></button></td> */}
-                             </tr>)
-                        } 
+                            </tr>)
+                        }
 
 
 
