@@ -1,10 +1,11 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 
 
 
 const ManageClasses = () => {
-    // const [status, setStatus] = useState('pending')
+    const [status, setStatus] = useState('pending')
     // const [enrolledClasses, setEnrolledClasses] = useState([])
     // const { user } = useContext(AuthContext)
     // const [axiosInstance] = useAxiosSecure()
@@ -32,19 +33,19 @@ const ManageClasses = () => {
 
 
     // handle approve
-    // const handleApprove = (item) => {
-    //     console.log(item)
-    //     const status = 'approved'
-    //     axiosInstance.put(`/updateStatus/${item._id}`, { status })
-    //         .then(response => {
-    //             if (response.data.modifiedCount) {
-    //                 Swal.fire('Approved')
-    //                 setStatus('approved')
-    //                 refetch()
-    //             }
-    //         })
-    //         .catch(error => console.log(error))
-    // }
+    const handleApprove = (item) => {
+        console.log(item)
+        const status = 'approved'
+        axios.patch(`http://localhost:3000/pending-courses/${item._id}`, { status })
+            .then(response => {
+                if (response.data.modifiedCount) {
+                    Swal.fire('Approved')
+                    setStatus('approved')
+                    // refetch()
+                }
+            })
+            .catch(error => console.log(error))
+    }
     // handle deny
     // const handleDeny = (item) => {
     //     const status = 'deny'
