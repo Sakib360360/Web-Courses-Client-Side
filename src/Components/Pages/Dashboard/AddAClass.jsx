@@ -18,13 +18,13 @@ const AddAClass = () => {
                     data.price = parseFloat(data.price)
                     const newItem = {
                         title: data.className,
-                        seats: data.availableSeats,
+                        seats: parseInt(data.availableSeats),
                         price: data.price,
                         instructor_name: user?.displayName,
                         instructor_email: user?.email,
                         status: data.status,
                         course_description:data.description,
-                        students:data.students,
+                        students:0,
                         picture:data.picture
 
                     };
@@ -100,7 +100,7 @@ const AddAClass = () => {
                         {...register('availableSeats', { required: true })}
                     />
                 </div>
-                <div className="mb-4">
+                {/* <div className="mb-4">
                     <label htmlFor="availableSeats" className="block text-gray-700 font-bold mb-2">
                         Students
                     </label>
@@ -113,7 +113,7 @@ const AddAClass = () => {
                         placeholder="students"
                         {...register('students', { required: true })}
                     />
-                </div>
+                </div> */}
 
                 <div className="mb-4">
                     <label htmlFor="price" className="block text-gray-700 font-bold mb-2">
