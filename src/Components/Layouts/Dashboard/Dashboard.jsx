@@ -1,14 +1,25 @@
 import React from 'react';
 import { Link, NavLink, Outlet } from 'react-router-dom';
 import { FaChalkboardTeacher,FaRegAddressBook,FaHome,FaUsers,FaUsersCog,FaCcStripe,FaFolder,FaFolderOpen } from "react-icons/fa";
-import Navbar from '../../Pages/Shared/Navbar/Navbar';
 import Footer from '../../Pages/Shared/Footer/Footer';
+import axios from 'axios';
+import useAuth from '../../../hooks/useAuth';
 
 const Dashboard = () => {
-    // const { user } = useContext(AuthContext)
+    const { user } = useAuth()
     // const [isInstructor, isInstructorLoading] = useInstructor()
     // const [isAdmin, isAdminLoading] = useAdmin()
     // console.log('isAdmin',isAdmin)
+    axios.get(`http://localhost:3000/users/role/${user?.email}`)
+  .then(response => {
+    // Handle the successful response here
+    console.log(response.data);
+  })
+  .catch(error => {
+    // Handle errors here
+    console.error('Error fetching data:', error);
+  });
+
     const isAdmin = false;
     const isInstructor = false;
     
