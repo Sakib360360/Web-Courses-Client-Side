@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 const Payment = () => {
     const { courseId } = useParams()
     console.log(courseId) 
-   const newClassId = courseId;
+   const newCourseId = courseId;
     const [course, setCourse] = useState({})
     useEffect(() => {
       
@@ -29,7 +29,7 @@ const Payment = () => {
         <div className="w-full">
             <h1 className="text-center text-3xl my-10 font-semibold">Payment</h1>
             <Elements stripe={stripePromise}>
-                <CheckoutForm newClassId={newClassId} course={course} price={price}></CheckoutForm>           
+                <CheckoutForm newCourseId={newCourseId} course={course} price={price}></CheckoutForm>           
             </Elements>
         </div>
     );
