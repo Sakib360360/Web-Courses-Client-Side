@@ -1,6 +1,6 @@
 
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import toast from 'react-hot-toast'
+import  { toast } from 'react-hot-toast'
 import { FcGoogle } from 'react-icons/fc'
 
 
