@@ -1,38 +1,71 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 
 
 import { FaChalkboardTeacher,FaUserTie } from "react-icons/fa";
+import Swal from 'sweetalert2';
 
 const ManageUsers = () => {
+    const [manageAllUsers,setManageAllUsers] = useState([])
+    const [disableInstructor,setDisableInstructor] = useState('')
+    const [disableAdmin,setDisableAdmin] = useState('')
+
+    const refetch = () => {
+        axios.get(`http://localhost:3000/users`)
+            .then(response => {
+                // Handle the successful response here
+                setManageAllUsers(response.data)
+
+            })
+            .catch(error => {
+                // Handle errors here
+                console.error('Error fetching data:', error);
+            });
+    }
+
+
+    useEffect(() => {
+        axios.get(`http://localhost:3000/users`)
+            .then(response => {
+                // Handle the successful response here
+                setManageAllUsers(response.data)
+
+            })
+            .catch(error => {
+                // Handle errors here
+                console.error('Error fetching data:', error);
+            });
+    }, [])
+    console.log(manageAllUsers)
 
     // console.log(manageAllUsers)
-    // const makeInstructor=(item)=>{
-    //     const role = 'instructor'
-    //     axiosInstance.put(`/manageUsers/${item._id}`,{role})
-    //     .then(response=>{
-    //         if(response.data.modifiedCount>0){
-    //             Swal.fire(`${item.name} is instructor now.`)
-    //             setDisableInstructor(item._id)
-    //             setDisableAdmin('')
-    //             refetch()
-    //         }
-    //     })
-    //     .catch(error=>console.log(error))
-    // }
+    const makeInstructor=(item)=>{
+        const role = 'instructor'
+        axios.patch(`http://localhost:3000/users/${item._id}?role=${role}`)
+        .then(response=>{
+            if(response.data.modifiedCount>0){
+                Swal.fire(`${item.name} is instructor now.`)
+                setDisableInstructor(item._id)
+                setDisableAdmin('')
+                refetch()
+            }
+        })
+        .catch(error=>console.log(error))
+    }
     // TODO:disable fucnt
-    // const makeAdmin=(item)=>{
-    //     const role = 'admin'
-    //     axiosInstance.put(`/manageUsers/${item._id}`,{role})
-    //     .then(response=>{
-    //         if(response.data.modifiedCount>0){
-    //             Swal.fire(`${item.name} is Admin now.`)
-    //             setDisableAdmin(item._id)
-    //             setDisableInstructor('')
-    //             refetch()
-    //         }
-    //     })
-    //     .catch(error=>console.log(error))
-    // }
+    const makeAdmin=(item)=>{
+        const role = 'admin'
+        axios.patch(`http://localhost:3000/users/${item._id}?role=${role}`)
+        .then(response=>{
+            if(response.data.modifiedCount>0){
+                Swal.fire(`${item.name} is Admin now.`)
+                setDisableAdmin(item._id)
+                setDisableInstructor('')
+                refetch()
+            }
+        })
+        .catch(error=>console.log(error))
+    }
     return (
         <div>
             
@@ -53,7 +86,7 @@ const ManageUsers = () => {
                             
                         </tr>
                     </thead>
-                    {/* <tbody>
+                     <tbody>
                         {
                             manageAllUsers.map((item, index) => <tr key={item._id}>
                                 <td>
@@ -74,7 +107,7 @@ const ManageUsers = () => {
 
 
 
-                    </tbody> */}
+                    </tbody> 
 
 
                 </table>
