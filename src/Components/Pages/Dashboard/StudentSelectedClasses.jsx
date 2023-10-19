@@ -88,7 +88,7 @@ const StudentSelectedClasses = () => {
                                 <th>Price</th>
                                 <th>Available Seats</th>
                                 <th>Delete</th>
-                                {/* <th>Pay</th> */}
+                                <th>Pay</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -118,7 +118,7 @@ const StudentSelectedClasses = () => {
                                     <td>
                                         <button className='btn hover:bg-transparent hover:text-red-500 btn-out btn-sm bg-transparent' onClick={() => handleDelete(item._id)}><FaTrashAlt></FaTrashAlt></button>
                                     </td>
-                                    {/* <td><Link to='../payment'><button className='btn btn-out btn-sm bg-transparent hover:bg-transparent hover:text-primary' onClick={()=>paymentItemPass(item)}><FaAmazonPay className='w-18'></FaAmazonPay></button></Link></td> */}
+                                    <td><Link to='../payment'><button className='btn btn-out btn-sm bg-transparent hover:bg-transparent hover:text-primary' onClick={()=>paymentItemPass(item)}><FaAmazonPay className='w-18'></FaAmazonPay></button></Link></td>
                                 </tr>)
                             }
 
