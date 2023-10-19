@@ -10,7 +10,7 @@ const useAxiosSecure = () => {
   const navigate = useNavigate(); 
 
   const axiosSecure = axios.create({
-    baseURL: 'DATA URL',             // TO DO URL Set korta Hoba
+    baseURL: 'http://localhost:3000',             // TO DO URL Set korta Hoba
   });
 
   useEffect(() => {

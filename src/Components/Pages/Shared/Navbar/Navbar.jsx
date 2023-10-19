@@ -1,136 +1,116 @@
-import { BsFillBookFill } from "react-icons/bs";
+import { useState } from "react";
+import { HiMenuAlt3 } from "react-icons/hi";
 import { Link } from "react-router-dom";
-import "./Navbar.css";
-// import  { useContext } from "react";
-// import { AuthContext } from "your-auth-context"; // Import your AuthContext
-// import { useCart } from "your-cart-context"; // Import your cart context
-// import { useAdmin } from "your-admin-context"; // Import your admin context
-
+import useAdmin from "../../../../hooks/useAdmin";
+import useAuth from "../../../../hooks/useAuth";
 const Navbar = () => {
-  //   const { user, logOut } = useContext(AuthContext);
-  //   const [cart] = useCart();
-  //   const [isAdmin] = useAdmin();
+  const { user, logOut } = useAuth();
+  const [isOpen, setIsOpen] = useState(false);
+  const [isAdmin, isAdminLoading] = useAdmin();
+  // console.log(isAdmin)
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        localStorage.removeItem("access-token");
+      })
+      .catch((error) => console.log(error));
+  };
 
-  const isAdmin = true; // fake
-
-  //   const handleLogOut = () => {
-  //     logOut()
-  //       .then(() => {})
-  //       .catch((error) => console.log(error));
-  //   };
-
-  //   const getUserProfilePicture = () => {
-  //     // Replace this with your logic to get the user's profile picture URL
-  //     return user.profilePictureUrl;
-  //   };
-
-  const navOptions = (
-    <>
-      <li>
-        <Link to="/">Home</Link>
-      </li>
-      <li>
-        <Link to="/aboutUS">About Us</Link>
-      </li>
-      <li>
-        <Link to="/courses">Courses</Link>
-      </li>
-      <li>
-        <Link to="/ourService">Our Service</Link>
-      </li>
-      <li>
-        <Link to="/contactUs">Contact Us</Link>
-      </li>
-
-      {isAdmin ? (
-        <li>
-          <Link to="/dashboard/adminHome">Dashboard</Link>
-        </li>
-      ) : (
-        <li>
-          <Link to="/dashboard/userhome">Dashboard</Link>
-        </li>
-      )}
-
-      {/*  <li>
-        <Link to="/dashboard/mycart">
-          <button className="btn gap-2">
-            <div className="badge badge-secondary">+{cart?.length || 0}</div>
-          </button>
-        </Link>
-      </li> */}
-
-      {/*   {user ? (
-        <>
-          <li>
-            <img src={getUserProfilePicture()} alt="Profile" className="profile-pic" />
-          </li>
-          <li>
-            <button onClick={handleLogOut} className="btn btn-active">
-              LogOut
-            </button>
-          </li>
-        </>
-      ) : (
-        <li>
-          <Link to="/login">Login</Link>
-        </li>
-      )} */}
-    </>
-  );
+  const getUserProfilePicture = () => {
+    // Replace this with your logic to get the user's profile picture URL
+    return user.photoURL;
+  };
 
   return (
-    <>
-      <div className="navBackGround">
-        <div className="navbar mx-auto  autoPlay text-white">
-          <div className="navbar-start">
-            <div className="dropdown">
-              <label tabIndex={0} className="btn btn-ghost lg:hidden">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h8m-8 6h16"
-                  />
-                </svg>
-              </label>
-              <ul
-                tabIndex={0}
-                className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
-              >
-                {navOptions}
-              </ul>
-            </div>
-            <a className="btn btn-ghost normal-case text-xl">
-              <span className="font-bold">
-                <BsFillBookFill></BsFillBookFill>
-              </span>{" "}
-              Online School
-            </a>
-          </div>
-          <div className="navbar-center hidden lg:flex">
-            <ul className="menu font-semibold menu-horizontal px-1">{navOptions}</ul>
-          </div>
-          <div className="navbar-end">
-            {/* {user && <img className="rounded-md w-[50px] h-[50px]" src={getUserProfilePicture()} alt="Profile" />} */}
-          </div>
-          <div className="navbar-end">
-            <img
-              className="  rounded-full w-[50px] h-[50px]"
-              src="https://i.ibb.co/0MbWfk5/download.jpg"
-              alt=""
-            />
-          </div>
+    <nav className="flex items-center justify-between flex-wrap p-6 shadow-md bg-slate-500">
+      <div className="flex items-center flex-shrink-0 text-white mr-6 lg:mr-72">
+        <img
+          className="rounded-full w-10 h-10 "
+          src="https://i.ibb.co/0MbWfk5/download.jpg"
+          alt=""
+        />{" "}
+        {/* You can give this logo if you want. */}
+      </div>
+      <div className="block lg:hidden">
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="flex items-center px-3 py-2 rounded text-black-500 hover:text-black-400"
+        >
+          <HiMenuAlt3></HiMenuAlt3>
+        </button>
+      </div>
+      <div
+        className={`w-full block flex-grow lg:flex lg:items-center lg:w-auto ${
+          isOpen ? "block" : "hidden"
+        }`}
+      >
+        <div className="text-sm lg:flex-grow">
+          <Link
+            to="/"
+            className="block mt-4 lg:inline-block lg:mt-0 text-white-200 mr-4"
+          >
+            Home
+          </Link>
+          <Link
+            to="/aboutUS"
+            className="block mt-4 lg:inline-block lg:mt-0 text-white-200 mr-4"
+          >
+            About Us
+          </Link>
+          <Link
+            to="/courses"
+            className="block mt-4 lg:inline-block lg:mt-0 text-white-200 mr-4"
+          >
+            Courses
+          </Link>
+          <Link
+            to="/ourService"
+            className="block mt-4 lg:inline-block lg:mt-0 text-white-200 mr-4"
+          >
+            Services
+          </Link>
+          <Link
+            to="/contactUS"
+            className="block mt-4 lg:inline-block lg:mt-0 text-white-200 mr-4"
+          >
+            Contact us
+          </Link>
+          {isAdmin ? (
+            <Link
+              to="/dashboard/adminHome"
+              className="block mt-4 lg:inline-block lg:mt-0 text-white-200 mr-4"
+            >
+              Dashboard
+            </Link>
+          ) : (
+            <Link
+              to="/dashboard/studenthome"
+              className="block mt-4 lg:inline-block lg:mt-0 text-white-200 mr-4"
+            >
+              Dashboard
+            </Link>
+          )}
+        </div>
+        <div className="flex items-center space-x-4">
+          {user ? (
+            <>
+              <img
+                src={getUserProfilePicture()}
+                alt="Profile"
+                className="w-10 h-10 rounded-full"
+              />
+              <button onClick={handleLogOut} className="text-white">
+                Logout
+              </button>
+            </>
+          ) : (
+            <Link to="/login" className="text-white text-center">
+              Login
+            </Link>
+          )}
         </div>
       </div>
-    </>
+    </nav>
   );
 };
 

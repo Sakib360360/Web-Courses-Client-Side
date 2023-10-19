@@ -1,10 +1,11 @@
-import React from 'react';
+import useAuth from "../../../hooks/useAuth";
 
 const InstructorDashboard = () => {
+    const { user } = useAuth();
+    console.log(user);
     return (
-        <div>
-            instructor
-        </div>
+        <></>
+
     );
 };
 
