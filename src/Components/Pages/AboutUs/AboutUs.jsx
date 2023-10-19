@@ -12,7 +12,7 @@ const AboutUs = () => {
   }, []);
 
   return (
-    <div className="mb-8 mt-8">
+    <div className="mb-8 mt-8 overflow-hidden">
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row">
           <div
@@ -23,7 +23,7 @@ const AboutUs = () => {
           >
             <img
               src="https://i.ibb.co/3rMVwhS/cleverbox-about-us-small-2.webp"
-              className="w-3/4 h-[463px] rounded-lg shadow-2xl"
+              className="w-full h-[463px] rounded-lg shadow-2xl"
             />
             <img
               src="https://i.ibb.co/3mDPfKd/13.jpg"
