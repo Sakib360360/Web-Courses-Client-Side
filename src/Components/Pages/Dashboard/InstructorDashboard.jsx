@@ -4,7 +4,7 @@ const InstructorDashboard = () => {
     const { user } = useAuth();
     console.log(user);
     return (
-        <></>
+        <> </>
 
     );
 };

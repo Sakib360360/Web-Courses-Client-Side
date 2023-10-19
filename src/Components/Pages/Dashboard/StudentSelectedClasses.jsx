@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import { FaTrashAlt, FaAmazonPay } from 'react-icons/fa';
 
 import Swal from 'sweetalert2';
@@ -30,13 +30,13 @@ const StudentSelectedClasses = () => {
             .then(response => {
                 // Handle the successful response here
                 setSelectedClasses(response.data)
-
+                  
             })
             .catch(error => {
                 // Handle errors here
                 console.error('Error fetching data:', error);
             });
-    }, [])
+    }, [user?.email])
 
     // const paymentItemPass =(item)=>{
     //     setPaymentItem(item)

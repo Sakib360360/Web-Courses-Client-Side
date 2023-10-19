@@ -22,6 +22,7 @@ const InstructorHome = () => {
           </div>
 
           {/* Total Earnings Card */}
+
           <div className="bg-gray-50 text-gray-900 rounded-lg shadow-md p-4">
               <h2 className="text-2xl font-bold mb-2">Total Earnings</h2>
               <p className="text-lg">$5000</p>
