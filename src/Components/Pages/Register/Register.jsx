@@ -41,7 +41,9 @@ const Register = () => {
 
             if (email) {
               axios
-                .post("http://localhost:3000/jwt", { email: email })
+                .post("https://web-courses-server-side.vercel.app/jwt", {
+                  email: email,
+                })
                 .then((res) => {
                   localStorage.setItem("access-token", `${res.data}`);
                 });
@@ -49,7 +51,7 @@ const Register = () => {
               localStorage.removeItem("access-token");
             }
 
-            fetch("http://localhost:3000/users", {
+            fetch("https://web-courses-server-side.vercel.app/users", {
               method: "POST",
               headers: {
                 "content-type": "application/json",
@@ -90,7 +92,9 @@ const Register = () => {
       .then((result) => {
         if (result.user) {
           axios
-            .post("http://localhost:3000/jwt", { email: result.user?.email })
+            .post("https://web-courses-server-side.vercel.app/jwt", {
+              email: result.user?.email,
+            })
             .then((res) => {
               localStorage.setItem("access-token", `${res.data}`);
             });
@@ -106,7 +110,7 @@ const Register = () => {
           role: "student",
           photo: loggedInUser.photoURL,
         };
-        fetch("http://localhost:3000/users", {
+        fetch("https://web-courses-server-side.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",

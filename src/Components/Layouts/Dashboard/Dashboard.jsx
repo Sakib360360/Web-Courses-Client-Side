@@ -1,136 +1,162 @@
-import React, { useEffect, useState } from 'react';
-import { Link, NavLink, Outlet } from 'react-router-dom';
-import { FaChalkboardTeacher,FaRegAddressBook,FaHome,FaUsers,FaUsersCog,FaCcStripe,FaFolder,FaFolderOpen } from "react-icons/fa";
-import Footer from '../../Pages/Shared/Footer/Footer';
+import React, { useEffect, useState } from "react";
+import {
+  FaCcStripe,
+  FaChalkboardTeacher,
+  FaFolder,
+  FaFolderOpen,
+  FaHome,
+  FaRegAddressBook,
+  FaUsersCog,
+} from "react-icons/fa";
+import { Link, NavLink, Outlet } from "react-router-dom";
+import Footer from "../../Pages/Shared/Footer/Footer";
 // import axios from 'axios';
-import useAuth from '../../../hooks/useAuth';
-import useAdmin from '../../../hooks/useAdmin';
+import useAdmin from "../../../hooks/useAdmin";
+import useAuth from "../../../hooks/useAuth";
 
 const Dashboard = () => {
-    const { user } = useAuth()
-    const [isAdmin, isAdminLoading] = useAdmin()
-    const [isAdminn,setIsAdminn] = useState(false)
-    const [isInstructor,setIsInstructor] = useState(false)
-    
-    // const [isInstructor, isInstructorLoading] = useInstructor()
-    
-    // console.log('isAdmin',isAdmin)
-//     useEffect(()=>{
-//         axios.get(`http://localhost:3000/users/role/${user?.email}`)
-//   .then(response => {
-//     // Handle the successful response here
-//     setRole(response.data.role)
-    
-//   })
-//   .catch(error => {
-//     // Handle errors here
-//     console.error('Error fetching data:', error);
-//   });
-//     },[role])
+  const { user } = useAuth();
+  const [isAdmin, isAdminLoading] = useAdmin();
+  const [isAdminn, setIsAdminn] = useState(false);
+  const [isInstructor, setIsInstructor] = useState(false);
 
-    // console.log(role);
-    // console.log(isAdmin,isInstructor)
-    useEffect(()=>{
-        if(isAdmin==="admin"){
-            setIsAdminn(true)
-        }else if(isAdmin ==="instructor"){
-            setIsInstructor(true)
-        }
-    },[isAdmin])
+  // const [isInstructor, isInstructorLoading] = useInstructor()
 
-    
+  // console.log('isAdmin',isAdmin)
+  //     useEffect(()=>{
+  //         axios.get(`https://web-courses-server-side.vercel.app/users/role/${user?.email}`)
+  //   .then(response => {
+  //     // Handle the successful response here
+  //     setRole(response.data.role)
 
-   
-    
-    
-    
-    const navItems = <>
+  //   })
+  //   .catch(error => {
+  //     // Handle errors here
+  //     console.error('Error fetching data:', error);
+  //   });
+  //     },[role])
 
-        {
-            isInstructor && <>
-                <li><NavLink to='/dashboard/instructorHome'>Instructor Home <FaHome></FaHome></NavLink></li>
-                <li><NavLink to='/dashboard/addAClass'>Add a Class <FaRegAddressBook></FaRegAddressBook></NavLink></li>
-                <li><NavLink to='/dashboard/myClasses'>My Classes <FaChalkboardTeacher></FaChalkboardTeacher></NavLink></li>
-            </>
-        }
-        {
-            isAdminn && <>
-                <li><NavLink to='/dashboard/adminHome'>Admin Home <FaHome></FaHome></NavLink></li>
-                <li><NavLink to='/dashboard/manageClasses'>Manage Classes <FaChalkboardTeacher></FaChalkboardTeacher></NavLink></li>
-                <li><NavLink to='/dashboard/manageUsers'>Manage Users <FaUsersCog></FaUsersCog></NavLink></li>
-            </>
-        }
-        {
-            isAdminn===false && isInstructor===false ? <>
-                <li><NavLink to='/dashboard/studenthome'>Home <FaHome></FaHome></NavLink></li>
-                <li><NavLink to='/dashboard/selectedClasses'>My Selected Classes <FaFolder></FaFolder></NavLink></li>
-                <li><NavLink to='/dashboard/enrolledClasses'>My Enrolled Classes <FaFolderOpen></FaFolderOpen></NavLink></li>
-                <li><NavLink to='/dashboard/paymentHistory'>My Pyament History <FaCcStripe></FaCcStripe></NavLink></li>
-            </> : null
-        }
+  // console.log(role);
+  // console.log(isAdmin,isInstructor)
+  useEffect(() => {
+    if (isAdmin === "admin") {
+      setIsAdminn(true);
+    } else if (isAdmin === "instructor") {
+      setIsInstructor(true);
+    }
+  }, [isAdmin]);
 
-
-
+  const navItems = (
+    <>
+      {isInstructor && (
+        <>
+          <li>
+            <NavLink to="/dashboard/instructorHome">
+              Instructor Home <FaHome></FaHome>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard/addAClass">
+              Add a Class <FaRegAddressBook></FaRegAddressBook>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard/myClasses">
+              My Classes <FaChalkboardTeacher></FaChalkboardTeacher>
+            </NavLink>
+          </li>
+        </>
+      )}
+      {isAdminn && (
+        <>
+          <li>
+            <NavLink to="/dashboard/adminHome">
+              Admin Home <FaHome></FaHome>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard/manageClasses">
+              Manage Classes <FaChalkboardTeacher></FaChalkboardTeacher>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard/manageUsers">
+              Manage Users <FaUsersCog></FaUsersCog>
+            </NavLink>
+          </li>
+        </>
+      )}
+      {isAdminn === false && isInstructor === false ? (
+        <>
+          <li>
+            <NavLink to="/dashboard/studenthome">
+              Home <FaHome></FaHome>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard/selectedClasses">
+              My Selected Classes <FaFolder></FaFolder>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard/enrolledClasses">
+              My Enrolled Classes <FaFolderOpen></FaFolderOpen>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard/paymentHistory">
+              My Pyament History <FaCcStripe></FaCcStripe>
+            </NavLink>
+          </li>
+        </>
+      ) : null}
     </>
-    return (
+  );
+  return (
+    <div className="drawer relative lg:drawer-open">
+      <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+      <div className="drawer-content bg-no-repeat bg-cover flex flex-col bg-[url('https://e0.pxfuel.com/wallpapers/1019/142/desktop-wallpaper-light-blue-for-background.jpg')] items-center relative justify-center">
+        {/* Page content here */}
+        <div className="w-full absolute hidden md:block  top-0 left-0">
+          {/* <Navbar></Navbar> */}
+        </div>
+        <div className=" top-4 fixed right-1/2 z-20">
+          <label
+            htmlFor="my-drawer-2"
+            className="btn btn-outline drawer-button lg:hidden"
+          >
+            Dashboart Menu
+          </label>
+        </div>
 
-
-
-
-        <div className="drawer relative lg:drawer-open">
-                <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-                <div className="drawer-content bg-no-repeat bg-cover flex flex-col bg-[url('https://e0.pxfuel.com/wallpapers/1019/142/desktop-wallpaper-light-blue-for-background.jpg')] items-center relative justify-center">
-                    {/* Page content here */}
-                    <div className='w-full absolute hidden md:block  top-0 left-0'>
-                    {/* <Navbar></Navbar> */}
-                    
-                    </div>
-                    <div className=' top-4 fixed right-1/2 z-20'>
-                    <label htmlFor="my-drawer-2" className="btn btn-outline drawer-button lg:hidden">Dashboart Menu</label>
-                    </div>
-                    
-                    <div className='min-h-screen w-full mt-24'>
-                    <Outlet></Outlet>
-                    </div>
-                    <div className='w-full  '>
-                    <Footer></Footer>
-                    </div>
-                    
-
-                </div>
-                <div className="drawer-side">
-                    <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-72 h-full bg-no-repeat bg-cover flex flex-col bg-[url('https://e0.pxfuel.com/wallpapers/1019/142/desktop-wallpaper-light-blue-for-background.jpg')] text-black">
-                        {/* Sidebar content here */}
-                        {navItems}
-                        <div className='absolute left-8 bottom-8 '>
-                        <Link to={'/'} className='btn btn-outline'>Go bake to home</Link>
-                        </div>
-                    </ul>
-                    
-                </div>
-            </div>
-    );
+        <div className="min-h-screen w-full mt-24">
+          <Outlet></Outlet>
+        </div>
+        <div className="w-full  ">
+          <Footer></Footer>
+        </div>
+      </div>
+      <div className="drawer-side">
+        <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
+        <ul className="menu p-4 w-72 h-full bg-no-repeat bg-cover flex flex-col bg-[url('https://e0.pxfuel.com/wallpapers/1019/142/desktop-wallpaper-light-blue-for-background.jpg')] text-black">
+          {/* Sidebar content here */}
+          {navItems}
+          <div className="absolute left-8 bottom-8 ">
+            <Link to={"/"} className="btn btn-outline">
+              Go bake to home
+            </Link>
+          </div>
+        </ul>
+      </div>
+    </div>
+  );
 };
 
 export default Dashboard;
 
-
-
-
-
-
-
-
-
-
-
 // {
 
-
-
 //     <div className="drawer">
-
 
 //             <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
 //             <div className="drawer-content flex flex-col">
@@ -145,7 +171,7 @@ export default Dashboard;
 //                     <div className="flex-none hidden lg:block">
 //                         <ul className="menu menu-horizontal">
 //                             {/* Navbar menu content here */}
-                            
+
 //                         </ul>
 //                     </div>
 //                     <div>
@@ -166,7 +192,3 @@ export default Dashboard;
 //             </div>
 //         </div>
 // }
-
-
-
-

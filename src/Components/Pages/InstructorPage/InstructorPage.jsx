@@ -6,7 +6,7 @@ const InstructorPage = () => {
   console.log(instructors);
 
   useEffect(() => {
-    fetch("http://localhost:3000/instructors?limit=0")
+    fetch("https://web-courses-server-side.vercel.app/instructors?limit=0")
       .then((res) => res.json())
       .then((data) => setInstructors(data))
       .catch((err) => console.log(err));

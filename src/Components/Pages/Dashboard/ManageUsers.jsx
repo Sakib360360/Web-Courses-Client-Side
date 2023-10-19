@@ -11,7 +11,7 @@ const ManageUsers = () => {
 
   const refetch = () => {
     axios
-      .get(`http://localhost:3000/users`)
+      .get(`https://web-courses-server-side.vercel.app/users`)
       .then((response) => {
         // Handle the successful response here
         setManageAllUsers(response.data);
@@ -31,7 +31,7 @@ const ManageUsers = () => {
     };
 
     axios
-      .get(`http://localhost:3000/users`, {
+      .get(`https://web-courses-server-side.vercel.app/users`, {
         headers: headers,
       })
       .then((response) => {
@@ -49,7 +49,9 @@ const ManageUsers = () => {
   const makeInstructor = (item) => {
     const role = "instructor";
     axios
-      .patch(`http://localhost:3000/users/${item._id}?role=${role}`)
+      .patch(
+        `https://web-courses-server-side.vercel.app/users/${item._id}?role=${role}`
+      )
       .then((response) => {
         if (response.data.modifiedCount > 0) {
           Swal.fire(`${item.name} is instructor now.`);
@@ -64,7 +66,9 @@ const ManageUsers = () => {
   const makeAdmin = (item) => {
     const role = "admin";
     axios
-      .patch(`http://localhost:3000/users/${item._id}?role=${role}`)
+      .patch(
+        `https://web-courses-server-side.vercel.app/users/${item._id}?role=${role}`
+      )
       .then((response) => {
         if (response.data.modifiedCount > 0) {
           Swal.fire(`${item.name} is Admin now.`);

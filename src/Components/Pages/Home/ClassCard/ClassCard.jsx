@@ -36,7 +36,7 @@ const ClassCard = ({ cls }) => {
       };
       // posting selected class in the server
       axios
-        .post("http://localhost:3000/cart", selectedClass)
+        .post("https://web-courses-server-side.vercel.app/cart", selectedClass)
         .then((response) => {
           if (response.data.insertedId) {
             Swal.fire("Selected");
