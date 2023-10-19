@@ -3,9 +3,10 @@ import { Link, NavLink, Outlet } from 'react-router-dom';
 import { FaChalkboardTeacher,FaRegAddressBook,FaHome,FaUsers,FaUsersCog,FaCcStripe,FaFolder,FaFolderOpen } from "react-icons/fa";
 import Footer from '../../Pages/Shared/Footer/Footer';
 import axios from 'axios';
+import useAuth from '../../../hooks/useAuth';
 
 const Dashboard = () => {
-    // const { user } = useContext(AuthContext)
+    const { user } = useAuth()
     // const [isInstructor, isInstructorLoading] = useInstructor()
     // const [isAdmin, isAdminLoading] = useAdmin()
     // console.log('isAdmin',isAdmin)
