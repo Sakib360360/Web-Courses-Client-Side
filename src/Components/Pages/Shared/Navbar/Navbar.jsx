@@ -64,6 +64,12 @@ const Navbar = () => {
             Courses
           </Link>
           <Link
+            to="/instructors"
+            className="block mt-4 lg:inline-block lg:mt-0 text-white-200 mr-4"
+          >
+            Instructors
+          </Link>
+          <Link
             to="/ourService"
             className="block mt-4 lg:inline-block lg:mt-0 text-white-200 mr-4"
           >
