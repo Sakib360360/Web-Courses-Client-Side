@@ -26,6 +26,9 @@ import AboutUs from "../Pages/AboutUs/AboutUs";
 import Contact from "../Pages/Contact/Contact";
 import Service from "../Pages/Service/Service";
 import Payment from "../Pages/Dashboard/Payment";
+import AboutUs from "../Pages/AboutUs/AboutUs";
+import Contact from "../Pages/Contact/Contact";
+import Service from "../Pages/Service/Service";
 
 
 export const router = createBrowserRouter([
