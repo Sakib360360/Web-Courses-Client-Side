@@ -81,6 +81,8 @@ const Register = () => {
         const saveUser = {
           name: loggedInUser.displayName,
           email: loggedInUser.email,
+          role: "student",
+          photo: loggedInUser.photoURL
         };
         fetch("http://localhost:3000/users", {
           method: "POST",
@@ -89,7 +91,7 @@ const Register = () => {
           },
           body: JSON.stringify(saveUser),
         })
-          .then((res) => res.json())
+        .then((res) => res.json())
           .then(() => {
             navigate(from, { replace: true });
           });
